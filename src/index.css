@@ -1,14 +1,74 @@
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-@import 'bulma'
+.container-one {
+  background-color: black;
+}
 
+.image img {
+  height: 100%;
+  width: 100px;
+  border-radius: 50px;
+}
 
+.flex-container {
+  display: flex;
+}
+.userD {
+  margin-left: 10px;
+}
+
+.container-card {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  padding-bottom: 10px;
+}
+
+.container-card Card {
+  width: 100px;
+  height: auto;
+}
+
+.container-card .button {
+  position: absolute;
+  top: 65%;
+  left: 90%;
+  height: 30px;
+  width: 5%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.contact {
+  font-size: x-small;
+  font-weight: lighter;
+}
+.name {
+  font-weight: bold;
+}
+.location {
+  font-style: italic;
+}
+
+.select select {
+  border-radius: 50px;
+}
+
+.input,
+.textarea {
+  border-radius: 50px;
+}
+
+/* @import 'bulma' */

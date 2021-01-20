@@ -3,11 +3,12 @@ import Card from "./Card";
 import Axios from "axios";
 import _ from "lodash";
 import { HashRouter, Route, Switch, Link } from "react-router-dom";
-import "./App.css";
+// import "./App.css";
 import "bulma-switch";
 import "@fortawesome/fontawesome-free";
 
 import UserShow from "./components/Show";
+import Footer from "./components/Footer";
 
 class App extends Component {
   constructor(props) {
@@ -73,73 +74,77 @@ class App extends Component {
     // console.log(newUserObj);
 
     return (
-      <div>
-        <section className="section">
-          <div className="container">
-            <h1>ALL USERS</h1>
-            <h4>Filter by</h4>
-            <div className="columns">
-              <div className="column">
-                <div className="field">
-                  <input placeholder="🔍  Find in list" className="input" />
+      <section className="section">
+        <div className="container">
+          <h1>Help</h1>
+          <section className="sectionone">
+            <div className="container-one">
+              <h1>ALL USERS</h1>
+              <h4>Filter by</h4>
+              <div className="columns">
+                <div className="column">
+                  <div className="field">
+                    <input placeholder="🔍  Find in list" className="input" />
+                  </div>
                 </div>
-              </div>
-              <div className="column">
-                <div className="field">
-                  <div className="select is-fullwidth">
-                    <select>
-                      <option value="country">country</option>
-                    </select>
+                <div className="column">
+                  <div className="field country">
+                    <div className="select is-fullwidth">
+                      <select>
+                        <option value="country">country</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div className="column">
+                  <div className="field">
+                    <input
+                      id="switchRoundedDefault"
+                      type="checkbox"
+                      name="switchRoundedDefault"
+                      className="switch is-rounded"
+                      defaultChecked="checked"
+                    />
+                    <label htmlFor="switchRoundedDefault">Show country</label>
                   </div>
                 </div>
               </div>
-              <div className="column">
-                <div className="field">
-                  <input
-                    id="switchRoundedDefault"
-                    type="checkbox"
-                    name="switchRoundedDefault"
-                    className="switch is-rounded"
-                    defaultChecked="checked"
-                  />
-                  <label htmlFor="switchRoundedDefault">Show country</label>
-                </div>
-              </div>
+              <HashRouter>
+                <Switch>
+                  <Route path="/show" component={UserShow} />
+                  <div className="columns-is-multiline">
+                    {this.filterUsers().map((user) => (
+                      <div className="container-card" key={user.name.first}>
+                        <Card
+                          picture={user.picture}
+                          name={user.name}
+                          dob={user.dob.age}
+                          location={user.location}
+                          email={user.email}
+                          phone={user.phone}
+                        />
+                        <Link
+                          to={{
+                            pathname: "/show",
+                            state: user,
+                          }}
+                        >
+                          <button className="button is-success">
+                            <span className="icon is-small">
+                              <i className="fas fa-long-arrow-alt-right"></i>
+                            </span>
+                          </button>
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                </Switch>
+              </HashRouter>
+              <Footer />
             </div>
-            <HashRouter>
-              <Switch>
-                <Route path="/show" component={UserShow} />
-                <div className="columns-is-multiline">
-                  {this.filterUsers().map((user) => (
-                    <React.Fragment key={user.name.first}>
-                      <Card
-                        picture={user.picture}
-                        name={user.name}
-                        dob={user.dob.age}
-                        location={user.location}
-                        email={user.email}
-                        phone={user.phone}
-                      />
-                      <Link
-                        to={{
-                          pathname: "/show",
-                          state: user,
-                        }}
-                      >
-                        <button className="button is-success">
-                          <span className="icon is-small">
-                            <i className="fas fa-long-arrow-alt-right"></i>
-                          </span>
-                        </button>
-                      </Link>
-                    </React.Fragment>
-                  ))}
-                </div>
-              </Switch>
-            </HashRouter>
-          </div>
-        </section>
-      </div>
+          </section>
+        </div>
+      </section>
     );
   }
 }

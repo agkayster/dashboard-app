@@ -13,16 +13,18 @@ class Footer extends Component {
                   </span>
                   <span>Download results</span>
                 </button>
-                <button className="button is-light">
-                  <span className="icon is-small">
-                    <i className="fas fa-less-than"></i>
-                  </span>
-                </button>
-                <button className="button is-black">
-                  <span className="icon is-small">
-                    <i className="fas fa-greater-than"></i>
-                  </span>
-                </button>
+                <div className="direction">
+                  <button className="button is-light">
+                    <span className="icon is-small">
+                      <i className="fas fa-less-than"></i>
+                    </span>
+                  </button>
+                  <button className="button is-black">
+                    <span className="icon is-small">
+                      <i className="fas fa-greater-than"></i>
+                    </span>
+                  </button>
+                </div>
               </p>
             </div>
           </footer>

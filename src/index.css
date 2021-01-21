@@ -9,28 +9,159 @@ code {
   font-family: "Poppins", sans-serif;
 }
 
+/*=============================================================================================> Landing page*/
+
+.section {
+  background-color: #17202a;
+  height: 650px;
+  padding: 1rem 1.5rem;
+  margin: 50px 15px 50px 15px;
+}
+
 .container-one {
-  background-color: black;
+  background-color: #e6f2ff;
+  width: 45%;
+  margin-top: 5px;
+  /* margin-left: 450px; */
+  float: right;
+  border-radius: 25px;
+  padding-bottom: 2px;
+}
+/*=========================================================================================> Hello Emerald*/
+
+h1.hello {
+  color: white;
+  font-weight: lighter;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-top: 90px;
+  font-size: 25px;
+}
+
+span.helloeme {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+h4.dashboard {
+  color: white;
+  margin-bottom: 10px;
+  padding-right: 40px;
+  margin-left: 20px;
+}
+
+h3.emeusers {
+  color: white;
+  margin-bottom: 35px;
+  padding-left: 20px;
+  font-size: 13px;
+}
+.emerald,
+.textarea {
+  border-radius: 10px;
+  border-style: none;
+  color: white;
+  width: 300px;
+  height: 45px;
+  /* margin-left: 25px; */
+  background-color: grey;
+  margin-bottom: 15px;
+}
+
+.introemerald {
+  margin: auto;
+}
+.buttonemerald {
+  margin-bottom: 100px;
+  padding-left: 20px;
+}
+.button.is-large.users {
+  border-radius: 15px;
+  background-color: #e74c3c;
+  border-style: none;
+  color: white;
+  height: 68px;
+  width: 65px;
+}
+.button.is-large.male {
+  margin-left: 20px;
+  border-radius: 10px;
+  background-color: #148f77;
+  border-style: none;
+  color: white;
+}
+.button.is-large.female {
+  margin-left: 20px;
+  border-radius: 10px;
+  background-color: #8e44ad;
+  border-style: none;
+  color: white;
+}
+
+.flexusers {
+  display: flex;
+}
+
+h4.allusers {
+  margin-left: 15px;
+  color: white;
+  font-size: 8px;
+}
+
+h4.maleusers {
+  margin-left: 45px;
+  color: white;
+  margin-top: 0px;
+  font-size: 8px;
+}
+h4.femaleusers {
+  margin-left: 35px;
+  color: white;
+  margin-top: 0px;
+  font-size: 8px;
+}
+
+/*===============================================================================================> Hello Emerald*/
+
+h1 {
+  margin-left: 40px;
+  margin-top: 40px;
+  font-weight: bolder;
+}
+h4 {
+  margin-left: 40px;
+  margin-top: 10px;
+  font-size: x-small;
 }
 
 .image img {
   height: 100%;
-  width: 100px;
+  width: 50px;
   border-radius: 50px;
+  border-style: solid;
+  border-color: #76d7c4;
 }
 
 .flex-container {
   display: flex;
 }
+.flex-container.intro {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 .userD {
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .container-card {
   position: relative;
   width: 100%;
-  max-width: 500px;
+  max-width: 470px;
   padding-bottom: 10px;
+  margin: auto;
 }
 
 .container-card Card {
@@ -41,18 +172,19 @@ code {
 .container-card .button {
   position: absolute;
   top: 65%;
-  left: 90%;
+  left: 92%;
   height: 30px;
-  width: 5%;
+  width: 1.5%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   padding: 12px 24px;
   border: none;
   border-radius: 10px;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #76d7c4;
 }
 .contact {
-  font-size: x-small;
+  font-size: 12px;
   font-weight: lighter;
 }
 .name {
@@ -60,15 +192,143 @@ code {
 }
 .location {
   font-style: italic;
+  font-size: small;
 }
 
-.select select {
-  border-radius: 50px;
+.columns {
+  margin: auto;
 }
 
 .input,
 .textarea {
   border-radius: 50px;
+  border-style: none;
+  border-width: 5px;
+  height: 35px;
+  margin-left: 25px;
+  background-color: rgb(220, 220, 220);
 }
+
+.select select {
+  border-radius: 50px;
+  border-style: none;
+  height: 32px;
+  margin-left: 15px;
+  background-color: rgb(220, 220, 220);
+}
+
+.country {
+  font-size: smaller;
+}
+
+.country::before {
+  width: 2rem;
+  height: 1rem;
+}
+
+.switch[type="checkbox"]:checked + label::after {
+  left: 0.9rem;
+}
+.switch[type="checkbox"] + label::after,
+.switch[type="checkbox"] + label:after {
+  display: block;
+  position: absolute;
+  top: 0.07rem;
+  left: 0.25rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  transform: translate3d(0, 0, 0);
+  border-radius: 4px;
+  background: #fff;
+  transition: all 0.25s ease-out;
+  content: "";
+}
+
+.footer {
+  height: 5px;
+  padding: 1.5rem 1.5rem 3.5rem;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+.button.is-link.is-rounded {
+  background-color: #6c3483;
+}
+
+.button.is-light {
+  margin-left: 200px;
+}
+
+/*=============================================================================================> Landing page*/
+/*=============================================================================================> Show Page*/
+.container-show {
+  height: 350px;
+}
+
+h1.title.is-2 {
+  font-size: 1.5rem;
+  margin-left: 10px;
+  margin-top: 0px;
+}
+
+span.title.is-2 {
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+
+h3.subtitle.is-4 {
+  font-size: 15px;
+  margin-left: 10px;
+  font-weight: lighter;
+}
+
+h4.subtitle.is-4 {
+  font-size: 12px;
+  margin-left: 15px;
+  padding-left: 10px;
+}
+
+h4.subtitle.is-4.email {
+  border-radius: 100px;
+  border-style: none;
+  width: 245px;
+  height: 25px;
+  padding-top: 4px;
+  background-color: rgb(220, 220, 220);
+  font-size: 12px;
+}
+
+h4.subtitle.is-4.join {
+  border-radius: 100px;
+  border-style: none;
+  width: 150px;
+  background-color: pink;
+  font-size: 12px;
+  height: 25px;
+  padding-top: 5px;
+}
+
+.image-show img {
+  height: 100%;
+  width: 135px;
+  border-radius: 100px;
+  border-style: solid;
+  border-color: #76d7c4;
+  margin-left: 10px;
+}
+
+.userdetails {
+  margin-left: 10px;
+}
+
+span.results {
+  font-size: 10px;
+  margin-bottom: 30px;
+}
+
+.arrow {
+  color: #76d7c4;
+}
+
+/*=============================================================================================> Show Page*/
 
 /* @import 'bulma' */

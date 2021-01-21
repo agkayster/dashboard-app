@@ -26,6 +26,8 @@ code {
   float: right;
   border-radius: 25px;
   padding-bottom: 2px;
+  position: relative;
+  min-height: 85vh;
 }
 /*=========================================================================================> Hello Emerald*/
 
@@ -107,16 +109,17 @@ h4.allusers {
   margin-left: 15px;
   color: white;
   font-size: 8px;
+  margin-top: 0px;
 }
 
 h4.maleusers {
-  margin-left: 45px;
+  margin-left: 58px;
   color: white;
   margin-top: 0px;
   font-size: 8px;
 }
 h4.femaleusers {
-  margin-left: 35px;
+  margin-left: 45px;
   color: white;
   margin-top: 0px;
   font-size: 8px;
@@ -245,10 +248,13 @@ h4 {
 }
 
 .footer {
-  height: 5px;
   padding: 1.5rem 1.5rem 3.5rem;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
 }
 .button.is-link.is-rounded {
   background-color: #6c3483;

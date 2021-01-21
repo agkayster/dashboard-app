@@ -17,19 +17,20 @@ class App extends Component {
     this.state = {
       userData: { results: [] },
       searchTerm: "",
+      genderTerm: "",
     };
     this.userGroup = this.userGroup.bind(this);
     this.filterUsers = this.filterUsers.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
+    this.handleGenderChange = this.handleGenderChange.bind(this);
   }
 
   componentDidMount() {
     this.userGroup();
   }
 
-  handleSearch(e) {
-    console.log("event", e.target.value);
-    this.setState({ searchTerm: e.target.value });
+  handleGenderChange(value) {
+    console.log("value", value);
+    this.setState({ genderTerm: value });
   }
 
   userGroup() {
@@ -39,12 +40,21 @@ class App extends Component {
   }
 
   filterUsers() {
-    const re = new RegExp(this.state.searchTerm, "i");
+    const { searchTerm, genderTerm, userData } = this.state;
+    const { results } = userData;
 
-    const filterUsers = _.filter(this.state.userData.results, (user) => {
-      return re.test(user.gender);
+    const testSearch = new RegExp(searchTerm, "i");
+    const filters = results.filter((result) => {
+      const { title, first, last } = result.name;
+      const fullName = `${title} ${first} ${last}`;
+      if (searchTerm.length > 0 && genderTerm.length > 0) {
+        return genderTerm === result.gender && testSearch.test(fullName);
+      } else if (searchTerm.length <= 0 && genderTerm.length > 0) {
+        return genderTerm === result.gender;
+      }
+      return true;
     });
-    return filterUsers;
+    return filters;
   }
 
   render() {
@@ -74,27 +84,42 @@ class App extends Component {
             <div>
               <h3 className="emeusers">Show Users</h3>
             </div>
+
             <div className="buttonemerald">
-              <button className="button is-large users">
-                <span className="icon is-small">
-                  <i className="fas fa-users"></i>
-                </span>
-              </button>
-              <button
-                type="button"
-                value="male"
-                onClick={this.handleSearch}
-                className="button is-large male"
-              >
-                <span className="icon is-small">
-                  <i className="fas fa-male"></i>
-                </span>
-              </button>
-              <button className="button is-large female">
-                <span className="icon is-small">
-                  <i className="fas fa-female"></i>
-                </span>
-              </button>
+              <div className="field is-grouped">
+                <div className="control">
+                  <button
+                    onClick={() => this.handleGenderChange("")}
+                    className="button is-large users"
+                  >
+                    <span className="icon is-small">
+                      <i className="fas fa-users"></i>
+                    </span>
+                  </button>
+                </div>
+                <div className="control">
+                  <button
+                    type="button"
+                    onClick={() => this.handleGenderChange("male")}
+                    className="button is-large male"
+                  >
+                    <span className="icon is-small">
+                      <i className="fas fa-male"></i>
+                    </span>
+                  </button>
+                </div>
+                <div className="control">
+                  <button
+                    onClick={() => this.handleGenderChange("female")}
+                    className="button is-large female"
+                  >
+                    <span className="icon is-small">
+                      <i className="fas fa-female"></i>
+                    </span>
+                  </button>
+                </div>
+              </div>
+
               <div className="flexusers">
                 <div>
                   <h4 className="allusers">All Users</h4>
@@ -108,6 +133,7 @@ class App extends Component {
               </div>
             </div>
           </div>
+
           <div className="container-one">
             <h1>All Users</h1>
             <h4>Filter by</h4>
@@ -183,3 +209,24 @@ class App extends Component {
 }
 
 export default App;
+
+// filterUsers() {
+//   const { searchTerm, genderTerm, userData } = this.state;
+//   console.log(searchTerm, "searchTerm", genderTerm, "gender term");
+//   const { results } = userData;
+//   const testSearch = new RegExp(searchTerm, "i");
+//   const filter = results.filter((result) => {
+//     const { title, first, last } = result.name;
+//     const fullName = `${title} ${first} ${last}`;
+//     if (searchTerm.length > 0 && genderTerm.length > 0) {
+//       return (
+//         genderTerm === result.gender && testSearch.test(fullName)
+//         // || append the remaining of your test here
+//       );
+//     } else if (searchTerm.length <= 0 && genderTerm.length > 0) {
+//       return genderTerm === result.gender;
+//     }
+//     return true;
+//   });
+//   return filter;
+// }

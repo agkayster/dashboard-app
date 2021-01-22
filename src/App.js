@@ -19,42 +19,40 @@ class App extends Component {
       searchTerm: "",
       genderTerm: "",
     };
-    this.userGroup = this.userGroup.bind(this);
-    this.filterUsers = this.filterUsers.bind(this);
-    this.handleGenderChange = this.handleGenderChange.bind(this);
+    // this.userGroup = this.userGroup.bind(this);
+   
+    // this.handleGenderChange = this.handleGenderChange.bind(this);
   }
 
   componentDidMount() {
     this.userGroup();
   }
 
-  handleGenderChange(value) {
-    console.log("value", value);
-    this.setState({ genderTerm: value });
-  }
+  handleGenderChange = (value) => this.setState({ genderTerm: value });
+  // console.log("value", value);
 
-  userGroup() {
+  userGroup = () => {
     Axios.get("https://randomuser.me/api/?results=3").then((res) =>
       this.setState({ userData: res.data })
     );
   }
 
-  filterUsers() {
-    const { searchTerm, genderTerm, userData } = this.state;
-    const { results } = userData;
+  filterUsers(){
+    const {searchTerm, genderTerm, userData} = this.state
+    const {results} = userData
+    const testSearch = new RegExp(searchTerm, "i")
 
-    const testSearch = new RegExp(searchTerm, "i");
-    const filters = results.filter((result) => {
-      const { title, first, last } = result.name;
-      const fullName = `${title} ${first} ${last}`;
-      if (searchTerm.length > 0 && genderTerm.length > 0) {
-        return genderTerm === result.gender && testSearch.test(fullName);
-      } else if (searchTerm.length <= 0 && genderTerm.length > 0) {
-        return genderTerm === result.gender;
+    const filters = _.filter(results, (result) => {
+      const {title, first, last} = result.name
+      const fullName = `${title} ${first} ${last}`
+      if(searchTerm.length > 0 && genderTerm.length > 0){
+        return genderTerm === result.gender && testSearch.test(fullName)
+      }else if (searchTerm.length <= 0 && genderTerm.length > 0){
+        return genderTerm === result.gender
       }
-      return true;
-    });
-    return filters;
+      return true
+    })
+    return filters
   }
 
   render() {
